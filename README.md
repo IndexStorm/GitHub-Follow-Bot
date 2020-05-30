@@ -16,7 +16,9 @@ Every day you are sent 5 GitHub users to follow. If you follow them in 24 hours,
 `pip install -r requirements.txt`
 
 ## Quick Start
-`python3 Bot.py`
+1. Create a [New Token](https://github.com/settings/tokens) with `repo: public_repo` permission.
+2. Place it in `get_gh_token` in `Bot/GitApi.py`
+3. `python3 Bot.py`
 
 ## Tech/framework used
 The bot was built on **Python 3.7** using [aiogram](https://github.com/aiogram/aiogram), [aiosqlite](https://github.com/omnilib/aiosqlite), [aiohttp](https://github.com/aio-libs/aiohttp).
