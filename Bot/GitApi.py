@@ -22,9 +22,12 @@ async def validate_username(user: str) -> bool:
     connector = aiohttp.TCPConnector(limit=1000)  # check limits
     async with aiohttp.ClientSession(connector=connector) as session:
         async with session.get(u, headers=get_headers()) as resp:
-            await resp.text()
+            json = await resp.json()
             await session.close()
-            return resp.status == 200
+            try:
+                return json['type'] == 'User'
+            except:
+                return False
 
 
 async def check_follows_direct(user: str, by_user: str) -> bool:
