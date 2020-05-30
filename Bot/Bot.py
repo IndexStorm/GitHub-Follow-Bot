@@ -21,6 +21,7 @@ from Distribution import creat_pools, create_groups, send_messages, create_group
 import Database
 import Localize
 
+# Create token: https://core.telegram.org/bots
 API_TOKEN = 'TELEGRAM_BOT_TOKEN'
 
 # Configure logging
