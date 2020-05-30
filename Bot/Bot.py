@@ -5,6 +5,7 @@ import random
 import time
 import datetime
 import asyncio
+import pytz
 import aiogram.utils.markdown as md
 
 from aiogram import Bot, Dispatcher, executor, types
@@ -77,7 +78,12 @@ async def rules(message: types.Message):
         user_locale = 'en'
     else:
         user_locale = 'ru'
-    await message.answer(Localize.Rules[user_locale])
+    # Server time is set to UTC-0
+    utc_0_hour = datetime.datetime.now().hour
+    london = 12 + datetime.datetime.now(pytz.timezone('Europe/London')).hour - utc_0_hour
+    moscow = 12 + datetime.datetime.now(pytz.timezone('Europe/Moscow')).hour - utc_0_hour
+    la = 12 + datetime.datetime.now(pytz.timezone('America/Los_Angeles')).hour - utc_0_hour
+    await message.answer(Localize.Rules[user_locale].format(london=london, moscow=moscow, la=la))
 
 
 @dp.message_handler(Text(equals='Change GitHub Profile', ignore_case=True))
@@ -261,6 +267,12 @@ async def process_locale(message: types.Message, state: FSMContext):
     else:
         markup.add("Обратная связь")
     await message.answer(Localize.Greetings[user_locale], reply_markup=markup)
+    # Server time is set to UTC-0
+    utc_0_hour = datetime.datetime.now().hour
+    london = 12 + datetime.datetime.now(pytz.timezone('Europe/London')).hour - utc_0_hour
+    moscow = 12 + datetime.datetime.now(pytz.timezone('Europe/Moscow')).hour - utc_0_hour
+    la = 12 + datetime.datetime.now(pytz.timezone('America/Los_Angeles')).hour - utc_0_hour
+    await message.answer(Localize.Rules[user_locale].format(london=london, moscow=moscow, la=la), reply_markup=markup)
     await message.answer(Localize.ChangingGit[user_locale], reply_markup=markup)
     await Form.next()
 
