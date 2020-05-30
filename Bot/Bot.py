@@ -38,7 +38,6 @@ class Form(StatesGroup):
     git_url = State()
 
 
-# Should be called once a day
 async def pipeline():
     await creat_pools()
     groups = await create_groups()
@@ -140,6 +139,16 @@ async def cancel_git(message: types.Message, state: FSMContext):
     await state.finish()
 
 
+@dp.message_handler(Text(equals='Contact Us', ignore_case=True), state='*')
+@dp.message_handler(Text(equals='Обратная связь', ignore_case=True), state='*')
+async def contact(message: types.Message):
+    if message.text.lower() == 'contact us':
+        user_locale = 'en'
+    else:
+        user_locale = 'ru'
+    await message.answer(Localize.Contact[user_locale])
+
+
 @dp.message_handler(state=Form.git_url)
 async def process_git(message: types.Message, state: FSMContext):
     username = message.text.lower()
@@ -217,17 +226,6 @@ async def process_git(message: types.Message, state: FSMContext):
         await pipeline_for_user(user_id)
 
 
-# TODO: all states
-@dp.message_handler(Text(equals='Contact us', ignore_case=True))
-@dp.message_handler(Text(equals='Обратная связь', ignore_case=True))
-async def contact(message: types.Message):
-    if message.text.lower() == 'contact us':
-        user_locale = 'en'
-    else:
-        user_locale = 'ru'
-    await message.answer(Localize.Contact[user_locale])
-
-
 @dp.message_handler(Text(equals='English 🇬🇧', ignore_case=True), state=Form.set_language)
 @dp.message_handler(Text(equals='Русский 🇷🇺', ignore_case=True), state=Form.set_language)
 async def process_locale(message: types.Message, state: FSMContext):
@@ -241,27 +239,29 @@ async def process_locale(message: types.Message, state: FSMContext):
     else:
         user_locale = 'ru'
 
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
     # updating locale
     if await Database.get_git_from_telegram(user_id):
         await Database.update_locale(user_id, user_locale)
-        markup = types.ReplyKeyboardMarkup(
-            resize_keyboard=True, selective=True)
         if user_locale == 'en':
             markup.add("Today's list", "Rules")
             markup.add("My GitHub", "Change GitHub Profile", "Contact Us")
-            await message.answer(Localize.UsingLanguage[user_locale], reply_markup=markup)
         else:
             markup.add("Список на сегодня", "Правила")
             markup.add("Мой GitHub", "Изменить профиль GitHub",
                        "Обратная связь")
-            await message.answer(Localize.UsingLanguage[user_locale], reply_markup=markup)
+        await message.answer(Localize.UsingLanguage[user_locale], reply_markup=markup)
         await state.finish()
         return
     # new user
     async with state.proxy() as data:
         data['locale'] = user_locale
-    await message.answer(Localize.Greetings[user_locale], reply_markup=types.ReplyKeyboardRemove())
-    await message.answer(Localize.ChangingGit[user_locale], reply_markup=types.ReplyKeyboardRemove())
+    if user_locale == 'en':
+        markup.add("Contact Us")
+    else:
+        markup.add("Обратная связь")
+    await message.answer(Localize.Greetings[user_locale], reply_markup=markup)
+    await message.answer(Localize.ChangingGit[user_locale], reply_markup=markup)
     await Form.next()
 
 
