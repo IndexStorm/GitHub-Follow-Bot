@@ -275,7 +275,7 @@ async def cmd_start(message: types.Message):
 
 if __name__ == '__main__':
     # Run pipeline once a day
-    scheduler = AsyncIOScheduler()
+    scheduler = AsyncIOScheduler(timezone='UTC')
     scheduler.add_job(pipeline, 'cron', hour=12, minute=0, second=0)
     scheduler.start()
     executor.start_polling(dp, skip_updates=True)
