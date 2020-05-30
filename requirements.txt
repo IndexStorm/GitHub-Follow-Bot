@@ -1,0 +1,4 @@
+aiogram==2.8
+aiohttp==3.6.2
+aiosqlite==0.13.0
+APScheduler==3.6.3
