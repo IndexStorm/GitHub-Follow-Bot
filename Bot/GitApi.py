@@ -3,6 +3,8 @@ import aiohttp
 
 
 def get_gh_token() -> str:
+    # https://github.com/settings/tokens
+    # repo -> public_repo
     tokens = ['GITHUB_TOKEN',
               'GITHUB_TOKEN']
     return random.choice(tokens)
