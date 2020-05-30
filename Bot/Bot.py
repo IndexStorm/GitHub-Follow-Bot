@@ -135,11 +135,12 @@ async def cancel_git(message: types.Message, state: FSMContext):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
     if user_locale == 'en':
         markup.add("Today's list", "Rules")
-        markup.add("My GitHub", "Change GitHub Profile", "Contact Us")
+        markup.add("My GitHub", "Change GitHub Profile")
+        markup.add("Contact Us")
     else:
         markup.add("Список на сегодня", "Правила")
-        markup.add("Мой GitHub", "Изменить профиль GitHub",
-                   "Обратная связь")
+        markup.add("Мой GitHub", "Изменить профиль GitHub")
+        markup.add("Обратная связь")
 
     await message.answer(Localize.CancelChangingGit[user_locale], reply_markup=markup)
     await state.finish()
@@ -185,11 +186,12 @@ async def process_git(message: types.Message, state: FSMContext):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, selective=True)
     if user_locale == 'en':
         markup.add("Today's list", "Rules")
-        markup.add("My GitHub", "Change GitHub Profile", "Contact Us")
+        markup.add("My GitHub", "Change GitHub Profile")
+        markup.add("Contact Us")
     else:
         markup.add("Список на сегодня", "Правила")
-        markup.add("Мой GitHub", "Изменить профиль GitHub",
-                   "Обратная связь")
+        markup.add("Мой GitHub", "Изменить профиль GitHub")
+        markup.add("Обратная связь")
 
     # only update username if user already exists
     if await Database.get_git_from_telegram(user_id):
@@ -251,11 +253,12 @@ async def process_locale(message: types.Message, state: FSMContext):
         await Database.update_locale(user_id, user_locale)
         if user_locale == 'en':
             markup.add("Today's list", "Rules")
-            markup.add("My GitHub", "Change GitHub Profile", "Contact Us")
+            markup.add("My GitHub", "Change GitHub Profile")
+            markup.add("Contact Us")
         else:
             markup.add("Список на сегодня", "Правила")
-            markup.add("Мой GitHub", "Изменить профиль GitHub",
-                       "Обратная связь")
+            markup.add("Мой GitHub", "Изменить профиль GitHub")
+            markup.add("Обратная связь")
         await message.answer(Localize.UsingLanguage[user_locale], reply_markup=markup)
         await state.finish()
         return
