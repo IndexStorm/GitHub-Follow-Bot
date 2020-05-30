@@ -1,6 +1,6 @@
 Greetings = {
-    'en': "Welcome to GitHub Follow Bot.\nEvery day at 12:00 UTC-0 (London) we send you 5 GitHub users to follow. If you follow them in 24 hours, then you will be featured to other users too. If you miss it, that's okay. As soon as you follow them we will add you back to the featured list 👌",
-    'ru': "Привет, добро пожаловать в бота!\nКаждые сутки мы присылаем 5 пользователей. Если ты подпишешься на всех, то попадаешь в следующую рассылку. Если пропустишь - ничего страшного, как только ты подпишешься, мы сразу же добавим тебя в рассылку 👌",
+    'en': "Welcome to GitHub Follow Bot.",
+    'ru': "Привет, добро пожаловать в бота!",
 }
 
 UsingLanguage = {
@@ -24,8 +24,8 @@ CancelChangingGit = {
 }
 
 Rules = {
-    'en': "Every day at 12:00 UTC-0 (London) we send you 5 GitHub users to follow. If you follow them in 24 hours, then you will be featured to other users too. If you miss it, that's okay. As soon as you follow them we will add you back to the featured list.",
-    'ru': "Каждые сутки в 12 UTC-0 (London) мы присылаем 5 пользователей. Если ты подпишешься на всех, то попадаешь в следующую рассылку.\nЕсли пропустишь - ничего страшного, подпишешься, и мы добавим тебя обратно в рассылку.",
+    'en': "Every day at 12:00 UTC-0 (London: {london}:00, Moscow: {moscow}:00, Los Angeles: {la}:00) we send you 5 GitHub users to follow. If you follow them in 24 hours, then you will be featured to other users too. If you miss it, that's okay. As soon as you follow them we will add you back to the featured list 👌",
+    'ru': "Каждые сутки в 12 UTC-0 (Лондон: {london}:00, Москва: {moscow}:00, Лос-Анджелес: {la}:00) мы присылаем 5 пользователей. Если ты подпишешься на всех, то попадаешь в следующую рассылку. Если пропустишь - ничего страшного, как только ты подпишешься, мы сразу же добавим тебя в рассылку 👌",
 }
 
 YourGithub = {
