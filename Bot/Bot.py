@@ -79,10 +79,10 @@ async def rules(message: types.Message):
     else:
         user_locale = 'ru'
     # Server time is set to UTC-0
-    utc_0_hour = datetime.datetime.now().hour
-    london = 12 + datetime.datetime.now(pytz.timezone('Europe/London')).hour - utc_0_hour
-    moscow = 12 + datetime.datetime.now(pytz.timezone('Europe/Moscow')).hour - utc_0_hour
-    la = 12 + datetime.datetime.now(pytz.timezone('America/Los_Angeles')).hour - utc_0_hour
+    utc_hour = datetime.datetime.now(pytz.timezone('UTC')).hour
+    london = 12 + datetime.datetime.now(pytz.timezone('Europe/London')).hour - utc_hour
+    moscow = 12 + datetime.datetime.now(pytz.timezone('Europe/Moscow')).hour - utc_hour
+    la = 12 + datetime.datetime.now(pytz.timezone('America/Los_Angeles')).hour - utc_hour
     await message.answer(Localize.Rules[user_locale].format(london=london, moscow=moscow, la=la))
 
 
@@ -268,10 +268,10 @@ async def process_locale(message: types.Message, state: FSMContext):
         markup.add("Обратная связь")
     await message.answer(Localize.Greetings[user_locale], reply_markup=markup)
     # Server time is set to UTC-0
-    utc_0_hour = datetime.datetime.now().hour
-    london = 12 + datetime.datetime.now(pytz.timezone('Europe/London')).hour - utc_0_hour
-    moscow = 12 + datetime.datetime.now(pytz.timezone('Europe/Moscow')).hour - utc_0_hour
-    la = 12 + datetime.datetime.now(pytz.timezone('America/Los_Angeles')).hour - utc_0_hour
+    utc_hour = datetime.datetime.now(pytz.timezone('UTC')).hour
+    london = 12 + datetime.datetime.now(pytz.timezone('Europe/London')).hour - utc_hour
+    moscow = 12 + datetime.datetime.now(pytz.timezone('Europe/Moscow')).hour - utc_hour
+    la = 12 + datetime.datetime.now(pytz.timezone('America/Los_Angeles')).hour - utc_hour
     await message.answer(Localize.Rules[user_locale].format(london=london, moscow=moscow, la=la), reply_markup=markup)
     await message.answer(Localize.ChangingGit[user_locale], reply_markup=markup)
     await Form.next()
