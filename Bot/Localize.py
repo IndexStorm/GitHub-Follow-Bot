@@ -19,8 +19,8 @@ ChangingGit = {
 }
 
 CancelChangingGit = {
-    'en': "Сancelled changing.🔙",
-    'ru': "Изменение отменено.🔙",
+    'en': "Сancelled changing 🔙",
+    'ru': "Изменение отменено 🔙",
 }
 
 Rules = {
