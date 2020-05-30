@@ -1,4 +1,4 @@
-# GitHub-Follow-Bot
+# GitHub Follow Bot
 [Telegram](https://telegram.org/) Bot to gain mutual subscriptions.
 
 Username: @GitHub_Follow_Bot
@@ -20,9 +20,9 @@ Every day you are sent 5 GitHub users to follow. If you follow them in 24 hours,
 The bot was built on **Python 3.7** using [aiogram](https://github.com/aiogram/aiogram), [aiosqlite](https://github.com/omnilib/aiosqlite), [aiohttp](https://github.com/aio-libs/aiohttp).
 
 ## indexStorm
-[Mike]('https://github.com/ovyan')
+[Mike](https://github.com/ovyan)
 
-[Evgeniy]('https://github.com/own2pwn')
+[Evgeniy](https://github.com/own2pwn)
 
 ## Licence
 MIT
