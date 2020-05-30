@@ -78,7 +78,6 @@ async def rules(message: types.Message):
         user_locale = 'en'
     else:
         user_locale = 'ru'
-    # Server time is set to UTC-0
     utc_hour = datetime.datetime.now(pytz.timezone('UTC')).hour
     london = 12 + datetime.datetime.now(pytz.timezone('Europe/London')).hour - utc_hour
     moscow = 12 + datetime.datetime.now(pytz.timezone('Europe/Moscow')).hour - utc_hour
@@ -267,7 +266,6 @@ async def process_locale(message: types.Message, state: FSMContext):
     else:
         markup.add("Обратная связь")
     await message.answer(Localize.Greetings[user_locale], reply_markup=markup)
-    # Server time is set to UTC-0
     utc_hour = datetime.datetime.now(pytz.timezone('UTC')).hour
     london = 12 + datetime.datetime.now(pytz.timezone('Europe/London')).hour - utc_hour
     moscow = 12 + datetime.datetime.now(pytz.timezone('Europe/Moscow')).hour - utc_hour
