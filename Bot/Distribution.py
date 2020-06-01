@@ -35,6 +35,11 @@ async def pool_task(row, db):
                     )
                 elif missed_days < 3:
                     await Bot.bot.send_message(chat_id=telegram_id, text=Localize.DidNotFollowed[user_locale])
+                    str_to_send = ""
+                    # make a list of people to follow
+                    for i in range(len(to_follow_list)):
+                        str_to_send += f"{i}. https://github.com/{to_follow_list[i]}\n"
+                    await Bot.bot.send_message(chat_id=telegram_id, text=Localize.YourList[user_locale].format(str_to_send=str_to_send))
             except:
                 pass
             return
