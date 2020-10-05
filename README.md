@@ -8,7 +8,7 @@ Link: https://t.me/GitHub_Follow_Bot
 <img src="https://imgur.com/HCl5DmU.jpg" width="25%" height="25%">
 
 ## Motivation
-This Bot is a new way to increase your networking, find other passionate programmers, and **gain GitHub followers**!
+This Bot is a new way to increase your networking, find other passionate programmers, and **gain more GitHub followers**!
 
 Every day you are sent 5 GitHub users to follow. If you follow them in 24 hours, then you will be featured to other users too. If you miss it, that's okay. As soon as you follow them the bot will add you back to the featured list.
 
