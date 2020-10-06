@@ -5,7 +5,7 @@ Username: @GitHub_Follow_Bot
 
 Link: https://t.me/GitHub_Follow_Bot
 
-<img src="https://imgur.com/HCl5DmU.jpg" width="25%" height="25%">
+<img src="https://imgur.com/HCl5DmU.jpg" width="24%" height="24%">
 
 ## Motivation
 This Bot is a new way to increase your networking, find other passionate programmers, and **gain more GitHub followers**!
