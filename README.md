@@ -1,3 +1,5 @@
+### Currently not operating
+
 # GitHub Follow Bot
 [Telegram](https://telegram.org/) Bot to gain mutual subscriptions.
 
